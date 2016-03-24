@@ -1,0 +1,16 @@
+<ion-view view-title="Dashboard">
+  <ion-content class="padding">
+    <h2>Welcome to Ionic</h2>
+    <most-data 
+    data-model="Product" 
+    data-filter="category eq 'Laptops'" 
+    data-top="10" 
+    data-order="price" 
+    data-name="products"></most-data>
+
+    <div ng-repeat="product in products">
+      <span>{{product.name}}, {{product.price}}</span>
+    </div>
+
+    </ion-content>
+</ion-view>
