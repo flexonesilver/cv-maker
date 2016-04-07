@@ -29,14 +29,28 @@ angular.module('starter', ['ionic', 'most', 'starter.controllers', 'starter.serv
 })
 .config(function($httpProvider) {
   $httpProvider.defaults.withCredentials = true;
+  $httpProvider.defaults.useXDomain = true;
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
 })
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+
+  $ionicConfigProvider.navBar.alignTitle('center');
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
+
+  // setup an abstract state for the tabs directive
+    .state('welcome', {
+      url: '/welcome',
+      templateUrl: 'templates/welcome.html'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'templates/login.html'
+    })
 
   // setup an abstract state for the tabs directive
     .state('tab', {
@@ -47,15 +61,22 @@ angular.module('starter', ['ionic', 'most', 'starter.controllers', 'starter.serv
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
-    views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
-    }
+  .state('profile', {
+    url: '/profile',
+    templateUrl: 'templates/profile.html'
   })
+      .state('education', {
+        url: '/education',
+        templateUrl: 'templates/education.html'
+      })
+      .state('skills', {
+        url: '/skills',
+        templateUrl: 'templates/skills.html'
+      })
+      .state('interests', {
+        url: '/interests',
+        templateUrl: 'templates/interests.html'
+      })
 
   .state('tab.chats', {
       url: '/chats',
@@ -87,6 +108,6 @@ angular.module('starter', ['ionic', 'most', 'starter.controllers', 'starter.serv
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/welcome');
 
 });

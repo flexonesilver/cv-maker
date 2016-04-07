@@ -1,0 +1,31 @@
+<ion-view  hide-back-button="true" view-title="Profile" ng-controller="ProfileController as ctrl">
+  <ion-content>
+    <!--<h2>Hello {{ctrl.profile.givenName}}</h2>-->
+    <div class="list">
+      <a class="item item-icon-left positive" ui-sref="education">
+        <i class="icon ion-ribbon-b"></i>
+        Education
+      </a>
+      <a class="item item-icon-left positive" ui-sref="interests">
+        <i class="icon ion-happy"></i>
+        Interests
+      </a>
+      <a class="item item-icon-left positive" ui-sref="skills">
+        <i class="icon ion-trophy"></i>
+        Skills
+      </a>
+    </div>
+    <div class="tabs">
+      <a class="tab-item" ui-sref="profile">
+        Home
+      </a>
+      <a class="tab-item">
+        Online Matching
+      </a>
+      <a class="tab-item">
+        Settings
+      </a>
+    </div>
+    </ion-content>
+</ion-view>
+
